@@ -1,0 +1,57 @@
+{
+  "name": "react-push-menu",
+  "version": "0.0.1",
+  "description": "react multi level push menu",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "parallelshell 'npm run start' 'chokidar '{src,sass}/**/*.{js,jsx,css,less}' -c 'webpack''",
+    "clean": "rimraf dist",
+    "build": "npm run clean && webpack",
+    "start": "npm run build && node example/server.js"
+  },
+  "peerDependencies": {
+    "react": ">=15.4.0",
+    "react-dom": ">=15.4.0",
+    "react-icons": "^2.2.1"
+  },
+  "dependencies": {
+    "slugify": "^1.0.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-plugin-lodash": "^3.2.10",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.16.0",
+    "bestzip": "^1.1.3",
+    "chokidar-cli": "^1.2.0",
+    "css-loader": "^0.26.0",
+    "debug": "^2.3.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.24.1",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "parallelshell": "^2.0.0",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "rimraf": "^2.5.4",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ht"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "menu",
+    "push",
+    "multi-level"
+  ],
+  "author": "Layton Whiteley",
+  "license": "MIT"
+}
