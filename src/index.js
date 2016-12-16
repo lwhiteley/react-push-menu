@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import mlPushMenu from './lib/mlpushmenu'
 import slugify from 'slugify';
 import ChevronRight from 'react-icons/lib/fa/chevron-right';
-import ChevronLeft from 'react-icons/lib/fa/chevron-left';
+import DefaultBackComponent from './DefaultBackButton';
 
 const defaultPropMaps = {
   displayName: 'name',
@@ -10,19 +10,6 @@ const defaultPropMaps = {
   expanderClasses: 'expClasses',
   url: 'url'
 };
-
-class DefaultBackComponent extends Component {
-  render(){
-    return (
-      <div>
-        <a className={`rpm-inline-block ${this.props.classPrefix}mp-back`} href="#">
-          <ChevronLeft className={'rpm-back-item'} />
-          <span className={'rpm-back-item'}>back</span>
-        </a>
-      </div>
-    );
-  }
-}
 
 export default class PushMenu extends Component {
   constructor(props){
@@ -34,8 +21,7 @@ export default class PushMenu extends Component {
     propMap: PropTypes.object,
     nodes: PropTypes.object,
     type: PropTypes.oneOf(['cover', 'overlap']),
-    menuTrigger: PropTypes.string,
-    // onNodeClick: PropTypes.function
+    menuTrigger: PropTypes.string
   };
 
   componentDidMount(){
@@ -59,15 +45,11 @@ export default class PushMenu extends Component {
   renderNode = (node, key, propMap) => {
     const hasChildren = node.children && node.children.length > 0;
     const nodeTitle = node[propMap.displayName];
-    console.log(this.props.onNodeClick)
     return (
       <li className={``} key={`${slugify(nodeTitle)}-${key}`}>
         <div className={`${this.classPrefix}node-cntr`} >
           <a
             className={ `rpm-node-link rpm-inline-block ${node[propMap.linkClasses] || ''}` }
-            onClick={(e) => {
-              this.props.onNodeClick(e, node, propMap)
-            }}
             href={node[propMap.url] || "#"}>
             {nodeTitle}
           </a>
