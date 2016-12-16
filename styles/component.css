@@ -182,13 +182,13 @@
 	display:inline-block;
 }
 .rpm-node-link {
-	width:70%;
+	width:59%;
 }
 .rpm-node-exp{
 	/*width:10%;*/
 	font-size: 20px;
 	cursor:pointer;
-  padding: 0.7em 1em 0.7em 1.8em;
+  padding: 0.7em 1em 0.7em 1em;
 	color: white;
 }
 .rpm-node-exp i {

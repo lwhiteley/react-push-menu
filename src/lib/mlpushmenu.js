@@ -142,7 +142,7 @@ module.exports = ( function( window ) {
 				// check if it has a sub level
 				var subLevel = el.querySelector( levelsClass );
 				if( subLevel ) {
-					el.querySelector( 'a' ).addEventListener( self.eventtype, function( ev ) {
+					el.querySelector( '.rpm-node-exp' ).addEventListener( self.eventtype, function( ev ) {
 						ev.preventDefault();
 						var level = closest( el, classPrefix + 'mp-level' ).getAttribute( 'data-level' );
 						if( self.level <= level ) {

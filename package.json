@@ -8,6 +8,7 @@
     "watch": "parallelshell 'npm run start' 'chokidar '{src,sass}/**/*.{js,jsx,css,less}' -c 'webpack''",
     "clean": "rimraf dist",
     "build": "npm run clean && webpack",
+    "dist": "NODE_ENV=production npm run clean && webpack",
     "start": "npm run build && node example/server.js"
   },
   "peerDependencies": {
