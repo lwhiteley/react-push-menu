@@ -8,7 +8,7 @@
  * Copyright 2013, Codrops
  * http://www.codrops.com
  */
- import classie from './classie.js';
+ var classie = require('./classie');
 
 module.exports = ( function( window ) {
 

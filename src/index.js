@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import mlPushMenu from './lib/mlpushmenu'
+var mlPushMenu = require('./lib/mlpushmenu');
 import slugify from 'slugify';
 import ChevronRight from 'react-icons/lib/fa/chevron-right';
 import DefaultBackComponent from './DefaultBackButton';
@@ -46,7 +46,7 @@ export default class PushMenu extends Component {
     const hasChildren = node.children && node.children.length > 0;
     const nodeTitle = node[propMap.displayName];
     return (
-      <li className={``} key={`${slugify(nodeTitle)}-${key}`}>
+      <li key={`${slugify(nodeTitle)}-${key}`}>
         <div className={`${this.classPrefix}node-cntr`} >
           <a
             className={ `rpm-node-link rpm-inline-block ${node[propMap.linkClasses] || ''}` }
@@ -113,6 +113,5 @@ export default class PushMenu extends Component {
 PushMenu.defaultProps = {
   propMap: defaultPropMaps,
   type: 'overlap',
-  menuTrigger: 'rpm-trigger',
-  onNodeClick: () => {console.warn('onNodeClick not implemented')}
+  menuTrigger: 'rpm-trigger'
 }
