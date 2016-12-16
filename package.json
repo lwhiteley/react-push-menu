@@ -17,7 +17,7 @@
     "react-icons": "^2.2.1"
   },
   "dependencies": {
-    "slugify": "^1.0.2"
+    "simple-slug": "^1.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",

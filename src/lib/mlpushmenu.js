@@ -8,6 +8,7 @@
  * Copyright 2013, Codrops
  * http://www.codrops.com
  */
+ 'use strict';
  var classie = require('./classie');
 
 module.exports = ( function( window ) {

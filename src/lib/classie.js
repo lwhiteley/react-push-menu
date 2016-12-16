@@ -10,6 +10,7 @@
 
 /*jshint browser: true, strict: true, undef: true */
 /*global define: false */
+'use strict';
 
 module.exports = ( function( window ) {
 

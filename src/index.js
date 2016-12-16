@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-var mlPushMenu = require('./lib/mlpushmenu');
-import slugify from 'slugify';
+var mlPushMenu = require( './lib/mlpushmenu');
+import slug from 'simple-slug';
 import ChevronRight from 'react-icons/lib/fa/chevron-right';
 import DefaultBackComponent from './DefaultBackButton';
 
@@ -46,7 +46,7 @@ export default class PushMenu extends Component {
     const hasChildren = node.children && node.children.length > 0;
     const nodeTitle = node[propMap.displayName];
     return (
-      <li key={`${slugify(nodeTitle)}-${key}`}>
+      <li key={`${slug(nodeTitle)}-${key}`}>
         <div className={`${this.classPrefix}node-cntr`} >
           <a
             className={ `rpm-node-link rpm-inline-block ${node[propMap.linkClasses] || ''}` }
