@@ -298,14 +298,9 @@
 	transition: background 0.3s;
 }
 
-/*.rpm-mp-back::after {
-	font-family: 'linecons';
-	position: absolute;
-	content: "\e037";
-	right: 10px;
-	font-size: 1.3em;
-	color: rgba(0,0,0,0.3);
-}*/
+.rpm-mp-back svg {
+	font-size: 35px;
+}
 
 .rpm-mp-menu .rpm-mp-level.rpm-mp-level-overlay > .rpm-mp-back,
 .rpm-mp-menu .rpm-mp-level.rpm-mp-level-overlay > .rpm-mp-back::after {
