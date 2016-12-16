@@ -1,6 +1,6 @@
 {
   "name": "react-push-menu",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "react multi level push menu",
   "main": "src/index.js",
   "scripts": {

@@ -1,20 +1,40 @@
 # react-push-menu
 
-### Prerequisites
+## Prerequisites
 
 Install peer dependencies
 
 `npm install --save react react-dom react-icons`
 
-### Install
+## Install
 
 `npm install --save react-push-menu`
 
-### How to use
+## How to use
 
-See [example](example/index.js)
+```js
+import 'react-push-menu/styles/component.css';
+import PushMenu from 'react-push-menu';
 
-### Properties
+/* ... */
+
+render(){
+  return(
+    <PushMenu
+      nodes={this.state.menu}
+      type={'cover'}
+      propMap={{url: 'link'}}>
+
+      <div className="rpm-trigger" id="rpm-trigger">trigger</div>
+
+    </PushMenu>
+  );
+}
+```
+
+See [example](example/index.js) for more details
+
+## Properties
 
 **nodes** (Object)
 
@@ -55,10 +75,10 @@ It can be one of the following values:
 This is the id of the element that will be used to toggle the push menu.
 default: `rpm-trigger`
 
-### Notes/Todos
+## Notes/Todos
 - Add on click handler to enable custom actions onclick
 - add task to deploy to gh-pages
 - Pull requests are welcome
 
-### Credits
+## Credits
 - This is a wrapper for [tympanus.net](https://tympanus.net/Development/MultiLevelPushMenu) push menu
