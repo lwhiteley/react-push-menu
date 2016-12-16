@@ -55,6 +55,7 @@ default: `rpm-trigger`
 
 ### Notes/Todos
 - Add on click handler to enable custom actions onclick
+- Pull requests are welcome
 
 ### Credits
-- This is a wrapper for [tympanus.net](https://tympanus.net) push menu
+- This is a wrapper for [tympanus.net](https://tympanus.net/Development/MultiLevelPushMenu) push menu
