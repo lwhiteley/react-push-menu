@@ -57,6 +57,7 @@ default: `rpm-trigger`
 
 ### Notes/Todos
 - Add on click handler to enable custom actions onclick
+- add task to deploy to gh-pages
 - Pull requests are welcome
 
 ### Credits
