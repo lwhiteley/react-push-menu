@@ -8,7 +8,7 @@ const defaultPropMaps = {
   displayName: 'name',
   linkClasses: 'classes',
   expanderClasses: 'expClasses',
-  url: 'url',
+  url: 'url'
 };
 
 class DefaultBackComponent extends Component {
@@ -34,7 +34,8 @@ export default class PushMenu extends Component {
     propMap: PropTypes.object,
     nodes: PropTypes.object,
     type: PropTypes.oneOf(['cover', 'overlap']),
-    menuTrigger: PropTypes.string
+    menuTrigger: PropTypes.string,
+    // onNodeClick: PropTypes.function
   };
 
   componentDidMount(){
@@ -58,10 +59,18 @@ export default class PushMenu extends Component {
   renderNode = (node, key, propMap) => {
     const hasChildren = node.children && node.children.length > 0;
     const nodeTitle = node[propMap.displayName];
+    console.log(this.props.onNodeClick)
     return (
       <li className={``} key={`${slugify(nodeTitle)}-${key}`}>
-        <div className={`${this.classPrefix}node-cntr`}>
-          <a className={ `rpm-node-link rpm-inline-block ${node[propMap.linkClasses] || ''}` } href={node[propMap.url] || "#"}>{nodeTitle}</a>
+        <div className={`${this.classPrefix}node-cntr`} >
+          <a
+            className={ `rpm-node-link rpm-inline-block ${node[propMap.linkClasses] || ''}` }
+            onClick={(e) => {
+              this.props.onNodeClick(e, node, propMap)
+            }}
+            href={node[propMap.url] || "#"}>
+            {nodeTitle}
+          </a>
           {hasChildren && this.renderExpandLink(node, propMap) }
         </div>
         {node.children && node.children.length > 0 && this.renderSubMenu(node, nodeTitle, propMap)}
@@ -122,5 +131,6 @@ export default class PushMenu extends Component {
 PushMenu.defaultProps = {
   propMap: defaultPropMaps,
   type: 'overlap',
-  menuTrigger: 'rpm-trigger'
+  menuTrigger: 'rpm-trigger',
+  onNodeClick: () => {console.warn('onNodeClick not implemented')}
 }
