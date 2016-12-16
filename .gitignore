@@ -6,6 +6,7 @@ tmp
 gruntfile.js
 .grunt
 .dist
+build
 
 
 # Created by https://www.gitignore.io/api/node,webstorm,bower,osx,grunt

@@ -1,14 +1,15 @@
 {
   "name": "react-push-menu",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "react multi level push menu",
-  "main": "src/index.js",
+  "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "parallelshell 'npm run start' 'chokidar '{src,sass}/**/*.{js,jsx,css,less}' -c 'webpack''",
     "clean": "rimraf dist",
     "build": "npm run clean && webpack",
     "dist": "NODE_ENV=production npm run clean && webpack",
+    "prepublish": "babel src -d build",
     "start": "npm run build && node example/server.js"
   },
   "peerDependencies": {
@@ -20,6 +21,7 @@
     "simple-slug": "^1.1.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
     "babel-plugin-lodash": "^3.2.10",
