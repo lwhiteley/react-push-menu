@@ -1,5 +1,8 @@
 # react-push-menu
 
+[![npm version](https://badge.fury.io/js/react-push-menu.svg)](https://badge.fury.io/js/react-push-menu)
+
+
 ## Prerequisites
 
 Install peer dependencies
