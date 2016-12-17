@@ -169,6 +169,7 @@
 	list-style: none;
 }
 
+.rpm-mp-menu .rpm-mp-header,
 .rpm-mp-menu h2 {
 	margin: 0;
 	padding: 1em;
@@ -216,6 +217,7 @@
 	transform: translateX(-100%);
 }
 
+.rpm-mp-menu.rpm-mp-cover .rpm-mp-header
 .rpm-mp-menu.rpm-mp-cover h2 {
 	text-transform: uppercase;
 	font-weight: 700;

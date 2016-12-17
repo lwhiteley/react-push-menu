@@ -20,7 +20,7 @@ if(process.env.NODE_ENV !== 'production') plugins.push(new webpack.HotModuleRepl
 module.exports = {
     devtool: 'source-map',
     entry: [
-        'webpack-dev-server/client?http://localhost:3000',
+        'webpack-dev-server/client?http://localhost:4000',
         'webpack/hot/only-dev-server',
         './example/index'
     ],

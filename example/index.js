@@ -34,6 +34,10 @@ class Page extends React.Component{
   render(){
     return (
       <PushMenu
+        onNodeClick={(e, instance) => {
+          console.log(instance);
+        }}
+        isOpen={true}
         nodes={this.state.menu}
         type={'cover'}
         propMap={{url: 'link'}}>

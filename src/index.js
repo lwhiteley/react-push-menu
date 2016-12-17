@@ -15,23 +15,31 @@ export default class PushMenu extends Component {
   constructor(props){
     super(props);
     this.classPrefix = 'rpm-';
+    this.state = {
+      pushInstance: null
+    }
   }
 
   static propTypes = {
     propMap: PropTypes.object,
     nodes: PropTypes.object,
+    isOpen: PropTypes.bool,
+    onNodeClick: PropTypes.func,
     type: PropTypes.oneOf(['cover', 'overlap']),
     menuTrigger: PropTypes.string
   };
 
   componentDidMount(){
-    new mlPushMenu(
+    this.state.pushInstance = new mlPushMenu(
         document.getElementById( 'rpm-mp-menu' ),
         document.getElementById( this.props.menuTrigger),
         {
-          type : this.props.type
+          type : this.props.type,
+          open: this.props.isOpen
         }
     );
+    this.setState({pushInstance: this.state.pushInstance});
+
   }
 
   renderExpandLink = (node, propMap) => {
@@ -49,6 +57,9 @@ export default class PushMenu extends Component {
       <li key={`${slug(nodeTitle)}-${key}`}>
         <div className={`${this.classPrefix}node-cntr`} >
           <a
+            onClick={(e) => {
+              this.props.onNodeClick(e, {menu: this.state.pushInstance, node, propMap});
+            }}
             className={ `rpm-node-link rpm-inline-block ${node[propMap.linkClasses] || ''}` }
             href={node[propMap.url] || "#"}>
             {nodeTitle}
@@ -84,8 +95,7 @@ export default class PushMenu extends Component {
 
           <nav id="rpm-mp-menu" className="rpm-mp-menu">
   					<div className="rpm-mp-level">
-  						<h2 className="icon icon-world">{this.props.nodes.header}</h2>
-
+  						<div className="rpm-mp-header">{this.props.nodes.header}</div>
               <ul>
                 {this.props.nodes.children && this.props.nodes.children.map((node, key) => {
                   return (
@@ -113,5 +123,7 @@ export default class PushMenu extends Component {
 PushMenu.defaultProps = {
   propMap: defaultPropMaps,
   type: 'overlap',
-  menuTrigger: 'rpm-trigger'
+  menuTrigger: 'rpm-trigger',
+  isOpen: false,
+  onNodeClick: () => {console.warn('onNodeClick not implemented')}
 }

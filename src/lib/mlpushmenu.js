@@ -14,8 +14,9 @@
 module.exports = ( function( window ) {
 
 	'use strict';
-	var classPrefix = 'rpm-';
-  var levelsClass = 'div.' + classPrefix + 'mp-level';
+	var classPrefix = 'rpm-',
+      bodyClickFn = null,
+      levelsClass = 'div.' + classPrefix + 'mp-level';
 
 
 	function extend( a, b ) {
@@ -75,7 +76,7 @@ module.exports = ( function( window ) {
 		// if( this.support ) {
 		// 	this._init();
 		// }
-    this._init();
+    this._init(this.options);
 	}
 
 	mlPushMenu.prototype = {
@@ -110,12 +111,22 @@ module.exports = ( function( window ) {
 			classie.add( this.el, classPrefix + 'mp-' + this.options.type );
 			// initialize / bind the necessary events
 			this._initEvents();
+
+      this.tools = {
+        open: this._openMenu,
+        reset: this._resetMenu,
+        close: this._closeMenu
+      }
+
+      if( this.options.open ) {
+				self._openMenu();
+			}
 		},
 		_initEvents : function() {
 			var self = this;
 
 			// the menu should close if clicking somewhere on the body
-			var bodyClickFn = function( el ) {
+			bodyClickFn = function( el ) {
 				self._resetMenu();
 				el.removeEventListener( self.eventtype, bodyClickFn );
 			};
@@ -129,12 +140,6 @@ module.exports = ( function( window ) {
 				}
 				else {
 					self._openMenu();
-					// the menu should close if clicking somewhere on the body (excluding clicks on the menu)
-					document.addEventListener( self.eventtype, function( ev ) {
-						if( self.open && !hasParent( ev.target, self.el.id ) ) {
-							bodyClickFn( this );
-						}
-					} );
 				}
 			} );
 
@@ -181,7 +186,8 @@ module.exports = ( function( window ) {
 				} );
 			} );
 		},
-		_openMenu : function( subLevel ) {
+		_openMenu : function( subLevel, init ) {
+      var self = this;
 			// increment level depth
 			++this.level;
 
@@ -206,6 +212,14 @@ module.exports = ( function( window ) {
 			if( this.level === 1 ) {
 				classie.add( this.wrapper, classPrefix + 'mp-pushed' );
 				this.open = true;
+
+        // the menu should close if clicking somewhere on the body (excluding clicks on the menu)
+        document.addEventListener( self.eventtype, function( ev ) {
+          if( self.open && !hasParent( ev.target, self.el.id ) ) {
+            bodyClickFn( this );
+          }
+        } );
+
 			}
 			// add class mp-level-open to the opening level element
 			classie.add( subLevel || this.levels[0], classPrefix + 'mp-level-open' );

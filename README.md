@@ -78,10 +78,38 @@ It can be one of the following values:
 This is the id of the element that will be used to toggle the push menu.
 default: `rpm-trigger`
 
+**isOpen** (boolean)
+
+This option allows you to initialize the push menu as open on load.
+
+Default: `false`
+
+**onNodeClick** (function)
+
+This is an onClick callback fired when you click the link of a menu item.
+Please note it won't be fired when you click the expand component for a menu item.
+
+**eg.**
+
+```js
+ <PushMenu
+  onNodeClick={(e, instance) => {
+    console.log(instance); // => {menu, node, propMap}
+
+    // following line will close the menu completely
+    instance.menu.tools.reset();
+  }} >
+  
+ </PushMenu>
+```
+
 ## Notes/Todos
-- Add on click handler to enable custom actions onclick
 - add task to deploy to gh-pages
-- Pull requests are welcome
+- allow override of node element and back button element
+- add more event handlers
+
+
+## Pull requests are welcome
 
 ## Credits
 - This is a wrapper for [tympanus.net](https://tympanus.net/Development/MultiLevelPushMenu) push menu
