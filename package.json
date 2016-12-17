@@ -1,6 +1,6 @@
 {
   "name": "react-push-menu",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "react multi level push menu",
   "main": "build/index.js",
   "scripts": {
@@ -19,6 +19,7 @@
     "react-icons": "^2.2.1"
   },
   "dependencies": {
+    "eventing-bus": "^1.3.3",
     "simple-slug": "^1.1.0"
   },
   "devDependencies": {

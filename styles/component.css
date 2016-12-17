@@ -8,7 +8,7 @@
 
 .rpm-container, .rpm-scroller {
 	height: 100%;
-	min-height:600px;
+	min-height:640px;
 }
 
 .rpm-scroller {
@@ -301,7 +301,7 @@
 }
 
 .rpm-mp-back svg {
-	font-size: 35px;
+	font-size: 20px;
 }
 
 .rpm-mp-menu .rpm-mp-level.rpm-mp-level-overlay > .rpm-mp-back,

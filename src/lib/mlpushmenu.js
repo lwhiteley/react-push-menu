@@ -113,9 +113,9 @@ module.exports = ( function( window ) {
 			this._initEvents();
 
       this.tools = {
-        open: this._openMenu,
-        reset: this._resetMenu,
-        close: this._closeMenu
+        open: this._openMenu.bind(self),
+        reset: this._resetMenu.bind(self),
+        close: this._closeMenu.bind(self)
       }
 
       if( this.options.open ) {

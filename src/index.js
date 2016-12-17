@@ -58,7 +58,15 @@ export default class PushMenu extends Component {
         <div className={`${this.classPrefix}node-cntr`} >
           <a
             onClick={(e) => {
-              this.props.onNodeClick(e, {menu: this.state.pushInstance, node, propMap});
+              this.props.onNodeClick(
+                e,
+                {
+                  menu: this.state.pushInstance,
+                  node,
+                  propMap,
+                  rootNode: this.props.nodes
+                }
+              );
             }}
             className={ `rpm-node-link rpm-inline-block ${node[propMap.linkClasses] || ''}` }
             href={node[propMap.url] || "#"}>

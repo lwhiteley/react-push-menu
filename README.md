@@ -94,12 +94,12 @@ Please note it won't be fired when you click the expand component for a menu ite
 ```js
  <PushMenu
   onNodeClick={(e, instance) => {
-    console.log(instance); // => {menu, node, propMap}
+    console.log(instance); // => {menu, node, propMap, rootNode}
 
     // following line will close the menu completely
     instance.menu.tools.reset();
   }} >
-  
+
  </PushMenu>
 ```
 

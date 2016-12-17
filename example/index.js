@@ -20,7 +20,18 @@ class Page extends React.Component{
             id: 1,
             link: '/about',
             children: [
-              {name: 'Mission', id: 11, link: '/about/mission', children: []}
+              {name: 'Mission', id: 11, link: null, children: []},
+              {name: 'Objectives', id: 12, link: null, children: []},
+              {
+                name: 'Goals',
+                id: 13,
+                link:
+                '/about/goals',
+                children: [
+                  {name: 'Charity', id: 131, link: null, children: []},
+                  {name: 'Clean Environment Plan', id: 132, link: null, children: []},
+                ]
+              }
             ]
           },
           {name: 'Services', id: 2, link: '/services', children: []},
@@ -36,6 +47,7 @@ class Page extends React.Component{
       <PushMenu
         onNodeClick={(e, instance) => {
           console.log(instance);
+          instance.menu.tools.reset();
         }}
         isOpen={false}
         nodes={this.state.menu}
