@@ -125,5 +125,5 @@ PushMenu.defaultProps = {
   type: 'overlap',
   menuTrigger: 'rpm-trigger',
   isOpen: false,
-  onNodeClick: () => {console.warn('onNodeClick not implemented')}
+  onNodeClick: () => {}
 }
