@@ -35,6 +35,10 @@ render(){
 }
 ```
 
+### Demo
+
+![demo](https://i.imgur.com/i7Knwu8.gif)
+
 See [example](example/index.js) for more details
 
 ## Properties
@@ -109,7 +113,7 @@ Please note it won't be fired when you click the expand component for a menu ite
 - add more event handlers
 
 
-## Pull requests are welcome
+#### Pull requests are welcome
 
 ## Credits
 - This is a wrapper for [tympanus.net](https://tympanus.net/Development/MultiLevelPushMenu) push menu
