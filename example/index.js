@@ -37,7 +37,7 @@ class Page extends React.Component{
         onNodeClick={(e, instance) => {
           console.log(instance);
         }}
-        isOpen={true}
+        isOpen={false}
         nodes={this.state.menu}
         type={'cover'}
         propMap={{url: 'link'}}>
