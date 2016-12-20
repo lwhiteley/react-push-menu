@@ -43,17 +43,11 @@ export default class PushMenu extends Component {
         }
     );
     this.setState({pushInstance: this.state.pushInstance});
-
   }
 
-  renderExpandLink = (node, propMap) => {
+  renderExpandLink = (nodeData) => {
     const ExpanderComponent = this.props.expanderComponent || ChevronRight;
-    const nodeData = {
-      menu: this.state.pushInstance,
-      node,
-      propMap,
-      rootNode: this.props.nodes
-    };
+    const {node, nodeTitle, propMap} = nodeData;
     return (
       <span className={`rpm-node-exp rpm-inline-block`}>
         <ExpanderComponent
@@ -80,19 +74,20 @@ export default class PushMenu extends Component {
             onNodeClick={this.props.onNodeClick}
             data={nodeData}
           />
-          {hasChildren && this.renderExpandLink(node, propMap) }
+          {hasChildren && this.renderExpandLink(nodeData) }
         </div>
-        {node.children && node.children.length > 0 && this.renderSubMenu(node, nodeTitle, propMap)}
+        {node.children && node.children.length > 0 && this.renderSubMenu(nodeData)}
       </li>
     );
   }
-  renderSubMenu = (node, nodeTitle, propMap) => {
+  renderSubMenu = (nodeData) => {
+    const {node, nodeTitle, propMap} = nodeData;
     const BackComponent = this.props.backComponent || DefaultBackComponent;
     return (
       <div className="rpm-mp-level">
         <h2>{nodeTitle}</h2>
         <div className={`rpm-inline-block ${this.classPrefix}mp-back`}>
-          <BackComponent classPrefix={this.classPrefix} />
+          <BackComponent classPrefix={this.classPrefix} data={nodeData} />
         </div>
         <ul>
           {node.children && node.children.length > 0 && node.children.map((node, key) => {

@@ -97,15 +97,33 @@ Please note it won't be fired when you click the expand component for a menu ite
 
 ```js
  <PushMenu
-  onNodeClick={(e, instance) => {
-    console.log(instance); // => {menu, node, propMap, rootNode}
+  onNodeClick={(e, data) => {
+    console.log(data); // => {menu, node, propMap, rootNode}
 
     // following line will close the menu completely
-    instance.menu.tools.reset();
+    data.menu.tools.reset();
   }} >
 
  </PushMenu>
 ```
+
+**linkComponent** (React.Component)
+
+You can fully customize the link of the menu by passing in a React Component to this property.
+It will be instantiated with the data object also passed in `onNodeClick` as a property (`this.props.data`).
+To see an example please see [example/LinkComponent.js](example/LinkComponent.js)
+
+**backComponent** (React.Component)
+
+You can fully customize the back link of the sub menus by passing in a React Component to this property.
+It will be instantiated with the data object also passed in `onNodeClick` as a property (`this.props.data`).
+
+**expanderComponent** (React.Component)
+
+You can fully customize the expander link of the sub menus by passing in a React Component to this property. The expander is the `chevron-right` that appears when a menu item has children.
+It will be instantiated with the data object also passed in `onNodeClick` as a property (`this.props.data`).
+
+
 
 ## Notes/Todos
 - add task to deploy to gh-pages
