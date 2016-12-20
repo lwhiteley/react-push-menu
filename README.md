@@ -124,10 +124,8 @@ You can fully customize the expander link of the sub menus by passing in a React
 It will be instantiated with the data object also passed in `onNodeClick` as a property (`this.props.data`).
 
 
-
 ## Notes/Todos
 - add task to deploy to gh-pages
-- allow override of node element and back button element
 - add more event handlers
 
 
