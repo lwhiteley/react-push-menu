@@ -91,7 +91,9 @@ export default class PushMenu extends Component {
     return (
       <div className="rpm-mp-level">
         <h2>{nodeTitle}</h2>
-        <BackComponent classPrefix={this.classPrefix} />
+        <div className={`rpm-inline-block ${this.classPrefix}mp-back`}>
+          <BackComponent classPrefix={this.classPrefix} />
+        </div>
         <ul>
           {node.children && node.children.length > 0 && node.children.map((node, key) => {
             return (
