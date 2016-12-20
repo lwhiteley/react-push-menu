@@ -3,6 +3,7 @@ var mlPushMenu = require( './lib/mlpushmenu');
 import slug from 'simple-slug';
 import ChevronRight from 'react-icons/lib/fa/chevron-right';
 import DefaultBackComponent from './DefaultBackButton';
+import DefaultLinkComponent from './DefaultLinkComponent'
 
 const defaultPropMaps = {
   displayName: 'name',
@@ -26,7 +27,10 @@ export default class PushMenu extends Component {
     isOpen: PropTypes.bool,
     onNodeClick: PropTypes.func,
     type: PropTypes.oneOf(['cover', 'overlap']),
-    menuTrigger: PropTypes.string
+    menuTrigger: PropTypes.string,
+    linkComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+    backComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+    expanderComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
   };
 
   componentDidMount(){
@@ -43,9 +47,18 @@ export default class PushMenu extends Component {
   }
 
   renderExpandLink = (node, propMap) => {
+    const ExpanderComponent = this.props.expanderComponent || ChevronRight;
+    const nodeData = {
+      menu: this.state.pushInstance,
+      node,
+      propMap,
+      rootNode: this.props.nodes
+    };
     return (
       <span className={`rpm-node-exp rpm-inline-block`}>
-        <ChevronRight />
+        <ExpanderComponent
+          data={nodeData}
+        />
       </span>
     );
   }
@@ -53,25 +66,20 @@ export default class PushMenu extends Component {
   renderNode = (node, key, propMap) => {
     const hasChildren = node.children && node.children.length > 0;
     const nodeTitle = node[propMap.displayName];
+    const nodeData = {
+      menu: this.state.pushInstance,
+      node,
+      propMap,
+      rootNode: this.props.nodes
+    };
+    const LinkComponent = this.props.linkComponent || DefaultLinkComponent;
     return (
       <li key={`${slug(nodeTitle)}-${key}`}>
         <div className={`${this.classPrefix}node-cntr`} >
-          <a
-            onClick={(e) => {
-              this.props.onNodeClick(
-                e,
-                {
-                  menu: this.state.pushInstance,
-                  node,
-                  propMap,
-                  rootNode: this.props.nodes
-                }
-              );
-            }}
-            className={ `rpm-node-link rpm-inline-block ${node[propMap.linkClasses] || ''}` }
-            href={node[propMap.url] || "#"}>
-            {nodeTitle}
-          </a>
+          <LinkComponent
+            onNodeClick={this.props.onNodeClick}
+            data={nodeData}
+          />
           {hasChildren && this.renderExpandLink(node, propMap) }
         </div>
         {node.children && node.children.length > 0 && this.renderSubMenu(node, nodeTitle, propMap)}
@@ -79,7 +87,7 @@ export default class PushMenu extends Component {
     );
   }
   renderSubMenu = (node, nodeTitle, propMap) => {
-    const BackComponent = DefaultBackComponent;
+    const BackComponent = this.props.backComponent || DefaultBackComponent;
     return (
       <div className="rpm-mp-level">
         <h2>{nodeTitle}</h2>

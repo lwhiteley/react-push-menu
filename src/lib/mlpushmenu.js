@@ -164,9 +164,9 @@ module.exports = ( function( window ) {
 			// by clicking on the visible part of the level element
 			this.levels.forEach( function( el, i ) {
 				el.addEventListener( self.eventtype, function( ev ) {
-					ev.stopPropagation();
 					var level = el.getAttribute( 'data-level' );
 					if( self.level > level ) {
+            // ev.stopPropagation();
 						self.level = level;
 						self._closeMenu();
 					}

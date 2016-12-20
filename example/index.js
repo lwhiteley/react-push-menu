@@ -8,6 +8,8 @@ import {render} from 'react-dom';
 import PushMenu from '../src/index'
 import Bars from 'react-icons/lib/fa/bars';
 
+import Link from './LinkComponent';
+
 class Page extends React.Component{
   constructor(props){
     super(props);
@@ -49,9 +51,10 @@ class Page extends React.Component{
           console.log(instance);
           instance.menu.tools.reset();
         }}
+        linkComponent={Link}
         isOpen={false}
         nodes={this.state.menu}
-        type={'cover'}
+        // type={'cover'}
         propMap={{url: 'link'}}>
 
         <div className="rpm-trigger" id="rpm-trigger" >

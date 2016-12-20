@@ -184,6 +184,7 @@
 }
 .rpm-node-link {
 	width:59%;
+	cursor:pointer;
 }
 .rpm-node-exp{
 	/*width:10%;*/

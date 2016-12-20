@@ -45,7 +45,7 @@ See [example](example/index.js) for more details
 
 **nodes** (Object)
 
-This property accepts an object with the definition for the menu. see the example](/example/index.js) for a sample menu definition
+This property accepts an object with the definition for the menu. see the [example](/example/index.js) for a sample menu definition
 
 **propMap** (Object)
 

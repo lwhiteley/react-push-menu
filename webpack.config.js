@@ -24,6 +24,9 @@ module.exports = {
         'webpack/hot/only-dev-server',
         './example/index'
     ],
+    devServer: {
+      port: 4000
+    },
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',

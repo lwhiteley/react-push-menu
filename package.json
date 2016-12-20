@@ -1,17 +1,16 @@
 {
   "name": "react-push-menu",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "react multi level push menu",
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "parallelshell 'npm run start' 'chokidar '{src,sass}/**/*.{js,jsx,css,less}' -c 'webpack''",
     "clean": "rimraf dist",
     "build": "npm run clean && webpack",
     "dist": "NODE_ENV=production npm run clean && webpack",
     "bablify": "babel src -d build",
     "prepublish": "npm run bablify",
-    "start": "npm run build && node example/server.js"
+    "start": "npm run build && webpack-dev-server --hot --inline"
   },
   "peerDependencies": {
     "react": ">=15.4.0",
@@ -19,19 +18,15 @@
     "react-icons": "^2.2.1"
   },
   "dependencies": {
-    "eventing-bus": "^1.3.3",
     "simple-slug": "^1.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
-    "babel-plugin-lodash": "^3.2.10",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.16.0",
-    "bestzip": "^1.1.3",
-    "chokidar-cli": "^1.2.0",
     "css-loader": "^0.26.0",
     "debug": "^2.3.3",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -39,7 +34,6 @@
     "html-webpack-plugin": "^2.24.1",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
-    "parallelshell": "^2.0.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
