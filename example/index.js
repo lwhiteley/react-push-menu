@@ -47,9 +47,8 @@ class Page extends React.Component{
   render(){
     return (
       <PushMenu
-        onNodeClick={(e, data) => {
-          console.log(data);
-          data.menu.tools.reset();
+        onNodeClick={(e, {menu}) => {
+          menu.tools.reset();
         }}
         linkComponent={Link}
         isOpen={false}
