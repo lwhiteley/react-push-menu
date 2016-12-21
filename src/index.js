@@ -25,12 +25,13 @@ export default class PushMenu extends Component {
     propMap: PropTypes.object,
     nodes: PropTypes.object,
     isOpen: PropTypes.bool,
-    onNodeClick: PropTypes.func,
     type: PropTypes.oneOf(['cover', 'overlap']),
+    onNodeClick: PropTypes.func,
+    getRef: PropTypes.func,
     menuTrigger: PropTypes.string,
-    linkComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-    backComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-    expanderComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
+    linkComponent: PropTypes.func,
+    backComponent: PropTypes.func,
+    expanderComponent: PropTypes.func
   };
 
   componentDidMount(){
@@ -43,6 +44,7 @@ export default class PushMenu extends Component {
         }
     );
     this.setState({pushInstance: this.state.pushInstance});
+    this.props.getRef(this.state.pushInstance)
   }
 
   renderExpandLink = (nodeData) => {
@@ -138,5 +140,6 @@ PushMenu.defaultProps = {
   type: 'overlap',
   menuTrigger: 'rpm-trigger',
   isOpen: false,
+  getRef: () => {},
   onNodeClick: () => {}
 }

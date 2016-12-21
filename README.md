@@ -106,6 +106,19 @@ Please note it won't be fired when you click the expand component for a menu ite
 
  </PushMenu>
 ```
+**getRef** (function)
+
+This function allows you to get access to the menu instance to have access to its tools.
+
+```js
+ <PushMenu
+  getRef={(menu) => {
+    this.menu = menu;
+  }} >
+
+ </PushMenu>
+```
+
 
 **linkComponent** (React.Component)
 
