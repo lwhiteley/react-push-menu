@@ -106,6 +106,15 @@ Please note it won't be fired when you click the expand component for a menu ite
 
  </PushMenu>
 ```
+
+**childPropName** (string)
+
+This is the property name that holds the children of each menu item node.
+We realize that data driven menu may differ and it is important to
+customize the properties that may hold the required data.
+
+default: `children`
+
 **getRef** (function)
 
 This function allows you to get access to the menu instance to have access to its tools.

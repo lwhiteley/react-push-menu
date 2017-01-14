@@ -62,6 +62,7 @@ export default class PushMenu extends Component {
   renderNode = (node, key, propMap) => {
     const hasChildren = node.children && node.children.length > 0;
     const nodeTitle = node[propMap.displayName];
+    const nodeChildren = node[this.props.childPropName];
     const nodeData = {
       menu: this.state.pushInstance,
       node,
@@ -78,12 +79,13 @@ export default class PushMenu extends Component {
           />
           {hasChildren && this.renderExpandLink(nodeData) }
         </div>
-        {node.children && node.children.length > 0 && this.renderSubMenu(nodeData)}
+        {nodeChildren && nodeChildren.length > 0 && this.renderSubMenu(nodeData)}
       </li>
     );
   }
   renderSubMenu = (nodeData) => {
     const {node, nodeTitle, propMap} = nodeData;
+    const nodeChildren = node[this.props.childPropName];
     const BackComponent = this.props.backComponent || DefaultBackComponent;
     return (
       <div className="rpm-mp-level">
@@ -92,7 +94,7 @@ export default class PushMenu extends Component {
           <BackComponent classPrefix={this.classPrefix} data={nodeData} />
         </div>
         <ul>
-          {node.children && node.children.length > 0 && node.children.map((node, key) => {
+          {nodeChildren && nodeChildren.length > 0 && nodeChildren.map((node, key) => {
             return (
               this.renderNode(node, key, propMap)
             );
@@ -104,6 +106,7 @@ export default class PushMenu extends Component {
 
   render(){
     const propMap = Object.assign({}, defaultPropMaps, this.props.propMap);
+    const nodeChildren = this.props.nodes[this.props.childPropName];
     return (
       <div className="rpm-container" id="rpm-container">
         <div className={`${this.classPrefix}mp-pusher`} id={`${this.classPrefix}mp-pusher`}>
@@ -112,7 +115,7 @@ export default class PushMenu extends Component {
   					<div className="rpm-mp-level">
   						<div className="rpm-mp-header">{this.props.nodes.header}</div>
               <ul>
-                {this.props.nodes.children && this.props.nodes.children.map((node, key) => {
+                {nodeChildren && nodeChildren.map((node, key) => {
                   return (
                     this.renderNode(node, key, propMap)
                   );
@@ -138,6 +141,7 @@ export default class PushMenu extends Component {
 PushMenu.defaultProps = {
   propMap: defaultPropMaps,
   type: 'overlap',
+  childPropName: 'children',
   menuTrigger: 'rpm-trigger',
   isOpen: false,
   getRef: () => {},
