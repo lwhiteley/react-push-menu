@@ -1,6 +1,6 @@
 {
   "name": "react-push-menu",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "react multi level push menu",
   "main": "build/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   "peerDependencies": {
     "react": ">=15.4.0",
     "react-dom": ">=15.4.0",
-    "react-icons": "^2.2.1"
+    "react-icons": ">=2.2.1"
   },
   "dependencies": {
     "simple-slug": "^1.1.0"
@@ -34,6 +34,9 @@
     "html-webpack-plugin": "^2.24.1",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "react-icons": "^2.2.1",
     "react-hot-loader": "^3.0.0-beta.6",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",

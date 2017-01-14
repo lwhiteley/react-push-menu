@@ -8,6 +8,7 @@ import DefaultLinkComponent from './DefaultLinkComponent'
 const defaultPropMaps = {
   displayName: 'name',
   linkClasses: 'classes',
+  childPropName: 'children',
   expanderClasses: 'expClasses',
   url: 'url'
 };
@@ -62,7 +63,7 @@ export default class PushMenu extends Component {
   renderNode = (node, key, propMap) => {
     const hasChildren = node.children && node.children.length > 0;
     const nodeTitle = node[propMap.displayName];
-    const nodeChildren = node[this.props.childPropName];
+    const nodeChildren = node[propMap.childPropName];
     const nodeData = {
       menu: this.state.pushInstance,
       node,
@@ -85,7 +86,7 @@ export default class PushMenu extends Component {
   }
   renderSubMenu = (nodeData) => {
     const {node, nodeTitle, propMap} = nodeData;
-    const nodeChildren = node[this.props.childPropName];
+    const nodeChildren = node[propMap.childPropName];
     const BackComponent = this.props.backComponent || DefaultBackComponent;
     return (
       <div className="rpm-mp-level">
@@ -106,7 +107,7 @@ export default class PushMenu extends Component {
 
   render(){
     const propMap = Object.assign({}, defaultPropMaps, this.props.propMap);
-    const nodeChildren = this.props.nodes[this.props.childPropName];
+    const nodeChildren = this.props.nodes[propMap.childPropName];
     return (
       <div className="rpm-container" id="rpm-container">
         <div className={`${this.classPrefix}mp-pusher`} id={`${this.classPrefix}mp-pusher`}>
@@ -141,7 +142,6 @@ export default class PushMenu extends Component {
 PushMenu.defaultProps = {
   propMap: defaultPropMaps,
   type: 'overlap',
-  childPropName: 'children',
   menuTrigger: 'rpm-trigger',
   isOpen: false,
   getRef: () => {},

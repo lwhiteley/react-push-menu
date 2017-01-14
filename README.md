@@ -7,7 +7,7 @@
 
 Install peer dependencies
 
-`npm install --save react react-dom react-icons`
+`npm install react react-dom react-icons --save`
 
 ## Install
 
@@ -58,6 +58,7 @@ This give the user the option to tell `react-push-menu` which property on the no
 | **linkClasses** | These are class names that will be added to the menu option. |
 | **expanderClasses** | These are class names that will be added to the menu option's expander given it has defined children. |
 | **url** | This tells the library which prop the url for the menu item is located. will default to a hash (`#`) if none is found |
+|**childPropName**|This is the property name that holds the children of each menu item node. We realize that data driven menu may differ and it is important to customize the properties that may hold the required data. default: `children`|
 
 **eg.**
 
@@ -66,6 +67,7 @@ This give the user the option to tell `react-push-menu` which property on the no
    displayName: 'title',
    linkClasses: 'classes',
    expanderClasses: 'expClasses',
+   childPropName: 'children',
    url: 'url'}} >
  </PushMenu>
 ```
@@ -106,14 +108,6 @@ Please note it won't be fired when you click the expand component for a menu ite
 
  </PushMenu>
 ```
-
-**childPropName** (string)
-
-This is the property name that holds the children of each menu item node.
-We realize that data driven menu may differ and it is important to
-customize the properties that may hold the required data.
-
-default: `children`
 
 **getRef** (function)
 
