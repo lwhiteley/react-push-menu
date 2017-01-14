@@ -1,6 +1,6 @@
 {
   "name": "react-push-menu",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "react multi level push menu",
   "main": "build/index.js",
   "scripts": {
@@ -18,9 +18,6 @@
     "react-icons": "^2.2.1"
   },
   "dependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-icons": "^2.2.3",
     "simple-slug": "^1.1.0"
   },
   "devDependencies": {
