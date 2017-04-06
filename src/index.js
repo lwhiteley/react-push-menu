@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 var mlPushMenu = require( './lib/mlpushmenu');
-import slug from 'simple-slug';
+import slug from './lib/slug';
 import ChevronRight from 'react-icons/lib/fa/chevron-right';
 import DefaultBackComponent from './DefaultBackButton';
 import DefaultLinkComponent from './DefaultLinkComponent'
