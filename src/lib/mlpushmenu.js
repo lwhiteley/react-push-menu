@@ -87,7 +87,9 @@ module.exports = ( function( window ) {
 			// space between each overlaped level
 			levelSpacing : 40,
 			// classname for the element (if any) that when clicked closes the current level
-			backClass : classPrefix + 'mp-back'
+			backClass : classPrefix + 'mp-back',
+			// whether the menu should hide when the user clicks outside of the menu element
+			autoHide: true
 		},
 		_init : function() {
 			// if menu is open or not
@@ -215,7 +217,7 @@ module.exports = ( function( window ) {
 
         // the menu should close if clicking somewhere on the body (excluding clicks on the menu)
         document.addEventListener( self.eventtype, function( ev ) {
-          if( self.open && !hasParent( ev.target, self.el.id ) ) {
+          if( self.open && !hasParent( ev.target, self.el.id ) && self.options.autoHide ) {
             bodyClickFn( this );
           }
         } );
