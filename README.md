@@ -90,6 +90,12 @@ This option allows you to initialize the push menu as open on load.
 
 Default: `false`
 
+**autoHide**
+
+This option specifies whether the menu should be hidden when the user clicks outside of the menu element.
+
+Default: `true`
+
 **onNodeClick** (function)
 
 This is an onClick callback fired when you click the link of a menu item.

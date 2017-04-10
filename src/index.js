@@ -41,7 +41,8 @@ export default class PushMenu extends Component {
         document.getElementById( this.props.menuTrigger),
         {
           type : this.props.type,
-          open: this.props.isOpen
+          open: this.props.isOpen,
+          autoHide: this.props.autoHide
         }
     );
     this.setState({pushInstance: this.state.pushInstance});
