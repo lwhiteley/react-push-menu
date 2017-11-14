@@ -109,7 +109,7 @@ export default class PushMenu extends Component {
 
   render(){
     const propMap = Object.assign({}, defaultPropMaps, this.props.propMap);
-    const nodeChildren = this.props.nodes[propMap.childPropName];
+    const nodeChildren = this.props.nodes[propMap.childPropName] || [];
     return (
       <div className="rpm-container" id="rpm-container">
         <div className={`${this.classPrefix}mp-pusher`} id={`${this.classPrefix}mp-pusher`}>
@@ -143,9 +143,10 @@ export default class PushMenu extends Component {
 
 PushMenu.defaultProps = {
   propMap: defaultPropMaps,
-  type: 'overlap',
+  type: 'cover',
   menuTrigger: 'rpm-trigger',
   isOpen: false,
   getRef: () => {},
-  onNodeClick: () => {}
+  onNodeClick: () => {},
+  nodes: {},
 }
