@@ -1,6 +1,6 @@
 {
   "name": "react-push-menu",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "react multi level push menu",
   "main": "build/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "react": ">=15.4.0",
     "react-dom": ">=15.4.0",
     "react-icons": ">=2.2.1",
-    "proptypes": "^1.1.0"
+    "proptypes": ">=1.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
