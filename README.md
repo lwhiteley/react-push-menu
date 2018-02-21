@@ -128,6 +128,32 @@ This function allows you to get access to the menu instance to have access to it
  </PushMenu>
 ```
 
+**onMenuOpen** (function)
+
+This function triggered after the menu is open.
+
+```js
+ <PushMenu
+  onMenuOpen={(menu) => {
+    // do something
+  }} >
+
+ </PushMenu>
+```
+
+**onMenuClose** (function)
+
+This function triggered after the menu is closed.
+
+```js
+ <PushMenu
+  onMenuClose={(menu) => {
+    // do something
+  }} >
+
+ </PushMenu>
+```
+
 
 **linkComponent** (React.Component)
 
