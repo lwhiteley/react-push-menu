@@ -228,7 +228,7 @@ module.exports = (function (window) {
 			classie.add(subLevel || this.levels[0], classPrefix + 'mp-level-open');
 
 			if (typeof this.options.onMenuOpen === 'function') {
-				this.options.onMenuOpen();
+				this.options.onMenuOpen(this);
 			  }
 		},
 		// close the menu
@@ -241,7 +241,7 @@ module.exports = (function (window) {
 			this.open = false;
 
 			if (typeof this.options.onMenuClose === 'function') {
-				this.options.onMenuClose();
+				this.options.onMenuClose(this);
 			  }
 		},
 		// close sub menus
