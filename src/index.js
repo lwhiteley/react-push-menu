@@ -33,6 +33,8 @@ export default class PushMenu extends Component {
     menuTrigger: PropTypes.string,
     linkComponent: PropTypes.func,
     backComponent: PropTypes.func,
+    onMenuOpen: PropTypes.func,
+    onMenuClose: PropTypes.func,
     expanderComponent: PropTypes.func
   };
 
@@ -43,7 +45,9 @@ export default class PushMenu extends Component {
         {
           type : this.props.type,
           open: this.props.isOpen,
-          autoHide: this.props.autoHide
+          autoHide: this.props.autoHide,
+          onMenuOpen: this.props.onMenuOpen,
+          onMenuClose: this.props.onMenuClose,
         }
     );
     this.setState({pushInstance: this.state.pushInstance});
@@ -149,4 +153,6 @@ PushMenu.defaultProps = {
   getRef: () => {},
   onNodeClick: () => {},
   nodes: {},
+  onMenuClose: () => {},
+  onMenuOpen: () => {},
 }
