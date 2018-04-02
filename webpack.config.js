@@ -6,7 +6,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var plugins = [
     new HtmlWebpackPlugin({
         filename: 'index.html',
-        template: './example/index.html',
+        template: './example/index.template.html',
         inject: true
     }),
     new webpack.NoErrorsPlugin(),
