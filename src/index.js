@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'proptypes';
+import PropTypes from 'prop-types';
 var mlPushMenu = require( './lib/mlpushmenu');
 import slug from './lib/slug';
 import ChevronRight from 'react-icons/lib/fa/chevron-right';

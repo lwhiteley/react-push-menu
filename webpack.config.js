@@ -6,7 +6,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var plugins = [
     new HtmlWebpackPlugin({
         filename: 'index.html',
-        template: './example/index.template.html',
+        template: './example/index.html',
         inject: true
     }),
     new webpack.NoErrorsPlugin(),
@@ -22,7 +22,7 @@ module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:4000',
         'webpack/hot/only-dev-server',
-        './example/index'
+        './example/index.js'
     ],
     devServer: {
       port: 4000
