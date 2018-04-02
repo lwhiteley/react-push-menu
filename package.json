@@ -13,10 +13,10 @@
     "start": "npm run build && webpack-dev-server --hot --inline"
   },
   "peerDependencies": {
-    "react": ">=15.4.0",
-    "react-dom": ">=15.4.0",
+    "react-dom": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-icons": ">=2.2.1",
-    "proptypes": ">=1.1.0"
+    "prop-types": "^15.5.10"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -32,9 +32,9 @@
     "html-webpack-plugin": "^2.24.1",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
-    "proptypes": "^1.1.0",
-    "react": "^15.4.0",
-    "react-dom": "^15.4.0",
+    "prop-types": "^15.5.10",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-icons": "^2.2.1",
     "react-hot-loader": "^3.0.0-beta.6",
     "rimraf": "^2.5.4",
@@ -54,5 +54,6 @@
     "multi-level"
   ],
   "author": "Layton Whiteley",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {}
 }
