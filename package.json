@@ -13,8 +13,8 @@
     "start": "npm run build && webpack-dev-server --hot --inline"
   },
   "peerDependencies": {
-    "react": ">=15.4.0",
-    "react-dom": ">=15.4.0",
+    "react-dom": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-icons": ">=2.2.1",
     "prop-types": "^15.5.10"
   },
@@ -54,5 +54,6 @@
     "multi-level"
   ],
   "author": "Layton Whiteley",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {}
 }
