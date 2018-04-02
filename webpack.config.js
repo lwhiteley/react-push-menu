@@ -22,7 +22,7 @@ module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:4000',
         'webpack/hot/only-dev-server',
-        './example/index'
+        './example/index.js'
     ],
     devServer: {
       port: 4000
