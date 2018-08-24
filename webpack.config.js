@@ -9,7 +9,7 @@ var plugins = [
         template: './example/index.template.html',
         inject: true
     }),
-    new webpack.NoErrorsPlugin(),
+    // new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin("styles.bundle.css", {
         allChunks: true
     })
@@ -19,13 +19,15 @@ if(process.env.NODE_ENV !== 'production') plugins.push(new webpack.HotModuleRepl
 
 module.exports = {
     devtool: 'source-map',
+    mode: 'development',
     entry: [
-        'webpack-dev-server/client?http://localhost:4000',
-        'webpack/hot/only-dev-server',
+        // 'webpack-dev-server/client?http://localhost:4000',
+        // 'webpack/hot/only-dev-server',
         './example/index.js'
     ],
     devServer: {
-      port: 4000
+      port: 4000,
+      contentBase: [path.join(__dirname, 'example')]
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -34,21 +36,33 @@ module.exports = {
     },
     plugins: plugins,
     module: {
-        loaders: [
+        rules: [
             {
               test: /\.(js|jsx)?$/,
-              loaders: ['babel?presets[]=es2015,presets[]=stage-0,presets[]=react,plugins[]=react-hot-loader/babel'],
+              use: {
+                loader: 'babel-loader',
+                options: {
+                  presets: ['babel-preset-env', 'babel-preset-react', 'stage-0']
+                }
+              },
               exclude: /node_modules/,
               include: __dirname
             },
             {
               test: /\.css/,
-              loader: ExtractTextPlugin.extract("style-loader", "css-loader"),
+            //   loader: ExtractTextPlugin.extract("style-loader", "css-loader"),
+              use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: "css-loader"
+              })
               // exclude: /node_modules/
             },
             {
               test: /\.less$/,
-              loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader"),
+              use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: "less-loader"
+              })
               // exclude: /node_modules/
             },
             {

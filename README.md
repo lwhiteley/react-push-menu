@@ -166,7 +166,15 @@ To see an example please see [example/LinkComponent.js](example/LinkComponent.js
 You can fully customize the back link of the sub menus by passing in a React Component to this property.
 It will be instantiated with the data object also passed in `onNodeClick` as a property (`this.props.data`).
 
-**expanderComponent** (React.Component)
+**backIcon** (React.Component)
+
+If you don't specify a `backComponent`, you can at least need specify an icon to use for the back component
+
+```js
+<FaChevronLeft />
+```
+
+**expanderComponent** (React.Component) (Required)
 
 You can fully customize the expander link of the sub menus by passing in a React Component to this property. The expander is the `chevron-right` that appears when a menu item has children.
 It will be instantiated with the data object also passed in `onNodeClick` as a property (`this.props.data`).
