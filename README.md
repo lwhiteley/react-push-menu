@@ -7,7 +7,7 @@
 
 Install peer dependencies
 
-`npm install react react-dom react-icons --save`
+`npm install react react-dom --save`
 
 ## Install
 
