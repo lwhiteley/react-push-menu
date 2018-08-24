@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
-import ChevronLeft from 'react-icons/lib/fa/chevron-left';
+// import {ChevronLeft} from 'react-icons/fa';
 
 export default class DefaultBackComponent extends Component {
   render(){
+    const {backIcon} = this.props;
     return (
         <a href="#">
-          <ChevronLeft className={'rpm-back-item'} />
+          <span className={'rpm-back-item'} >
+            {backIcon}
+          </span>
           <span className={'rpm-back-item'}>back</span>
         </a>
     );

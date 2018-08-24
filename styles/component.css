@@ -284,6 +284,9 @@
 .rpm-back-item {
 	padding: 0 10px;
 }
+span.rpm-back-item svg {
+    font-size: 10px;
+}
 
 .rpm-mp-back > a {
 	padding: 1em;

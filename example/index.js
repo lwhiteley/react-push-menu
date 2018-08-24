@@ -6,7 +6,7 @@ import './demo.css';
 import React from 'react'
 import {render} from 'react-dom';
 import PushMenu from '../src/index'
-import Bars from 'react-icons/lib/fa/bars';
+import {FaBars, FaChevronRight, FaChevronLeft} from 'react-icons/fa';
 
 import Link from './LinkComponent';
 
@@ -47,6 +47,8 @@ class Page extends React.Component{
   render(){
     return (
       <PushMenu
+        backIcon={<FaChevronLeft />}
+        expanderComponent={FaChevronRight}
         onNodeClick={(e, {menu, node}) => {
           console.log(node)
           menu.tools.reset();
@@ -58,7 +60,7 @@ class Page extends React.Component{
         propMap={{url: 'link'}}>
 
         <div className="rpm-trigger" id="rpm-trigger" >
-          <Bars />
+          <FaBars />
         </div>
 
       </PushMenu>

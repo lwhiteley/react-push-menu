@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 var mlPushMenu = require( './lib/mlpushmenu');
 import slug from './lib/slug';
-import ChevronRight from 'react-icons/lib/fa/chevron-right';
+// import {ChevronRight} from 'react-icons/lib/fa';
 import DefaultBackComponent from './DefaultBackButton';
 import DefaultLinkComponent from './DefaultLinkComponent'
 
@@ -23,21 +23,6 @@ export default class PushMenu extends Component {
     }
   }
 
-  static propTypes = {
-    propMap: PropTypes.object,
-    nodes: PropTypes.object,
-    isOpen: PropTypes.bool,
-    type: PropTypes.oneOf(['cover', 'overlap']),
-    onNodeClick: PropTypes.func,
-    getRef: PropTypes.func,
-    menuTrigger: PropTypes.string,
-    linkComponent: PropTypes.func,
-    backComponent: PropTypes.func,
-    onMenuOpen: PropTypes.func,
-    onMenuClose: PropTypes.func,
-    expanderComponent: PropTypes.func
-  };
-
   componentDidMount(){
     this.state.pushInstance = new mlPushMenu(
         document.getElementById( 'rpm-mp-menu' ),
@@ -55,7 +40,7 @@ export default class PushMenu extends Component {
   }
 
   renderExpandLink = (nodeData) => {
-    const ExpanderComponent = this.props.expanderComponent || ChevronRight;
+    const ExpanderComponent = this.props.expanderComponent;
     const {node, nodeTitle, propMap} = nodeData;
     return (
       <span className={`rpm-node-exp rpm-inline-block`}>
@@ -93,12 +78,13 @@ export default class PushMenu extends Component {
   renderSubMenu = (nodeData) => {
     const {node, nodeTitle, propMap} = nodeData;
     const nodeChildren = node[propMap.childPropName];
-    const BackComponent = this.props.backComponent || DefaultBackComponent;
+    const { backComponent, backIcon } = this.props;
+    const BackComponent = backComponent || DefaultBackComponent;
     return (
       <div className="rpm-mp-level">
         <h2>{nodeTitle}</h2>
         <div className={`rpm-inline-block ${this.classPrefix}mp-back`}>
-          <BackComponent classPrefix={this.classPrefix} data={nodeData} />
+          <BackComponent classPrefix={this.classPrefix} data={nodeData} backIcon={backIcon} />
         </div>
         <ul>
           {nodeChildren && nodeChildren.length > 0 && nodeChildren.map((node, key) => {
@@ -144,6 +130,25 @@ export default class PushMenu extends Component {
     );
   }
 }
+
+
+PushMenu.propTypes = {
+  propMap: PropTypes.object,
+  backIcon: PropTypes.node,
+  forwardIcon: PropTypes.node,
+  propMap: PropTypes.object,
+  nodes: PropTypes.object,
+  isOpen: PropTypes.bool,
+  type: PropTypes.oneOf(['cover', 'overlap']),
+  onNodeClick: PropTypes.func,
+  getRef: PropTypes.func,
+  menuTrigger: PropTypes.string,
+  linkComponent: PropTypes.func,
+  backComponent: PropTypes.func,
+  onMenuOpen: PropTypes.func,
+  onMenuClose: PropTypes.func,
+  expanderComponent: PropTypes.func.isRequired
+};
 
 PushMenu.defaultProps = {
   propMap: defaultPropMaps,
