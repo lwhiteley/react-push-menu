@@ -18,12 +18,15 @@ Install peer dependencies
 ```js
 import 'react-push-menu/styles/component.css';
 import PushMenu from 'react-push-menu';
+import {FaChevronRight, FaChevronLeft} from 'react-icons/fa';
 
 /* ... */
 
 render(){
   return(
     <PushMenu
+      backIcon={<FaChevronLeft />}
+      expanderComponent={FaChevronRight}
       nodes={this.state.menu}
       type={'cover'}
       propMap={{url: 'link'}}>
