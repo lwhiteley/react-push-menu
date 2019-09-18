@@ -164,18 +164,6 @@ module.exports = (function (window) {
 			});
 
 			// closing the sub levels :
-			// by clicking on the visible part of the level element
-			this.levels.forEach(function (el, i) {
-				el.addEventListener(self.eventtype, function (ev) {
-					var level = el.getAttribute('data-level');
-					if (self.level > level) {
-						// ev.stopPropagation();
-						self.level = level;
-						self._closeMenu();
-					}
-				});
-			});
-
 			// by clicking on a specific element
 			this.levelBack.forEach(function (el, i) {
 				el.addEventListener(self.eventtype, function (ev) {
