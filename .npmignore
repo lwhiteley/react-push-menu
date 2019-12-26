@@ -1,7 +1,13 @@
 example
 webpack*
+.vscode
 .DS_Store
-dist
-gruntfile.js
-.grunt
-.dist
+.prettierrc.js
+.eslint*
+.travis*
+rollup.config.js
+tsconfig.json
+test
+tmp
+src
+
