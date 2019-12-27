@@ -1,8 +1,8 @@
 example
 webpack*
 .vscode
-dist/.DS_Store 
 .DS_Store
+**/.DS_Store
 .prettierrc.js
 .eslint*
 .travis*
