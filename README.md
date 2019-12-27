@@ -1,6 +1,7 @@
 # react-push-menu
 
 > Notice: There are breaking changes.
+> Do not upgrade from v1.\* if you do not intent to adjust the interfaces seen below
 > The interface to manage the menu has changed.
 > Please see the examples below
 
