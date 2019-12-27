@@ -13,11 +13,11 @@ const defaultPropMaps: PropMap = {
 };
 
 export interface MenuContextData {
+  // state
   nodes: Record<string, any>;
   propMap: PropMap;
   visibleMenus: VisibleMenus;
   type: string;
-  // openOnRender: boolean;
 
   // actions
   addMenu: Function;

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
 
-import { usePushMenu, MenuContextData } from './reactComponentLib';
+import { usePushMenu } from './reactComponentLib';
 
 const StyledDiv = styled.div`
   padding: 10px;
@@ -10,8 +10,8 @@ const StyledDiv = styled.div`
   color: white;
 `;
 
-function App() {
-  const { toggleMenu } = usePushMenu() as MenuContextData;
+function Content() {
+  const { toggleMenu } = usePushMenu();
 
   return (
     <>
@@ -31,4 +31,4 @@ function App() {
   );
 }
 
-export default App;
+export default Content;
