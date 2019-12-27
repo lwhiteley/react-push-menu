@@ -1,5 +1,9 @@
 # react-push-menu
 
+> Notice: There are breaking changes.
+> The interface to manage the menu has changed.
+> Please see the examples below
+
 [![npm version](https://badge.fury.io/js/react-push-menu.svg)](https://badge.fury.io/js/react-push-menu)
 
 ## Prerequisites
