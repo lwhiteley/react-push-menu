@@ -1,54 +1,12 @@
 {
   "name": "react-push-menu",
-  "version": "1.2.0",
   "description": "react multi level push menu",
-  "main": "build/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "git push origin --tags && git push origin",
-    "release:patch": "npm version patch && npm publish --access public",
-    "release:minor": "npm version minor && npm publish --access public",
-    "release:major": "npm version major && npm publish --access public",
-    "clean": "rimraf dist",
-    "build": "npm run clean && webpack",
-    "dist": "NODE_ENV=production npm run clean && webpack",
-    "bablify": "babel src -d build",
-    "prepublish": "npm run bablify",
-    "start": "npm run build && webpack-dev-server"
-  },
-  "peerDependencies": {
-    "react-dom": "^16.4.2",
-    "prop-types": "^15.5.10"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-react": "^6.11.1",
-    "babel-preset-stage-0": "^6.16.0",
-    "css-loader": "^0.26.0",
-    "debug": "^2.3.3",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "file-loader": "^0.9.0",
-    "html-webpack-plugin": "^4.0.0-alpha",
-    "less": "^3.8.1",
-    "less-loader": "^4.1.0",
-    "prop-types": "^15.5.10",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-hot-loader": "^3.0.0-beta.6",
-    "react-icons": "^3.0.5",
-    "rimraf": "^2.5.4",
-    "style-loader": "^0.13.1",
-    "webpack": "^4.17.1",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.7.2"
-  },
+  "version": "3.0.1",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/lwhiteley/react-push-menu"
+    "url": "https://github.com/lwhiteley/react-push-menu",
+    "type": "git"
   },
   "keywords": [
     "react",
@@ -59,5 +17,58 @@
   ],
   "author": "Layton Whiteley",
   "license": "MIT",
-  "dependencies": {}
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "clsx": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.13",
+    "@types/react-dom": "^16.9.4",
+    "@types/styled-components": "^4.4.0",
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
+    "concurrently": "^5.0.0",
+    "eslint": "^6.7.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "install-peers-cli": "^2.1.1",
+    "npm-run-all": "^4.1.5",
+    "prepend-file": "^1.3.1",
+    "prettier": "^1.19.1",
+    "react-icons": "^3.8.0",
+    "rollup": "^1.27.5",
+    "rollup-plugin-typescript2": "^0.25.2",
+    "ts-node": "^8.5.2",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.2"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-components": "^4.4.1"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "build-watch": "rollup -c -w",
+    "prepublishOnly": "npm run build",
+    "postinstall": "install-peers -f && cd example && npm i",
+    "start-example": "cd example && npm start",
+    "deploy-example": "cd example && npm run deploy",
+    "dev": "concurrently --kill-others \"npm run build-watch\" \"npm run start-example\"",
+    "test": "run-s test:lint test:spec ",
+    "test:spec": "ts-node test/test.ts",
+    "pretest": "npm run build",
+    "test:lint": "eslint ./src/**/*.ts ./src/**/*.tsx ./example/src/**/*.ts ./example/src/**/*.tsx",
+    "test:lint:fix": "npm run test:lint -- --fix",
+    "publish": "git push origin --tags && git push origin",
+    "release:patch": "npm version patch && npm publish --access public",
+    "release:minor": "npm version minor && npm publish --access public",
+    "release:major": "npm version major && npm publish --access public",
+    "release:premajor": "npm version premajor && npm publish --access public",
+    "release:prerelease": "npm version prerelease && npm publish --access public"
+  },
+  "files": [
+    "dist"
+  ]
 }
