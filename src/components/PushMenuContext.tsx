@@ -17,7 +17,6 @@ export interface MenuContextData {
   nodes: Record<string, any>;
   propMap: PropMap;
   visibleMenus: VisibleMenus;
-  type: string;
 
   // actions
   addMenu: Function;
@@ -32,11 +31,9 @@ export interface Props {
   children: React.ReactNode;
   nodes: Record<string, any>;
   propMap: Partial<PropMap> | undefined;
-  type: string;
 }
 
 const Context = React.createContext<MenuContextData>({
-  type: 'cover',
   nodes: {},
   propMap: defaultPropMaps,
   visibleMenus: [],
@@ -49,7 +46,7 @@ const Context = React.createContext<MenuContextData>({
 });
 const { Provider } = Context;
 
-const PushMenuProvider: React.FC<Props> = ({ children, propMap: suppliedPropMap, nodes, type }) => {
+const PushMenuProvider: React.FC<Props> = ({ children, propMap: suppliedPropMap, nodes }) => {
   const [visibleMenus, setVisibleMenus] = React.useState<VisibleMenus>([]);
   const propMap = Object.assign({}, defaultPropMaps, suppliedPropMap);
 
@@ -93,7 +90,6 @@ const PushMenuProvider: React.FC<Props> = ({ children, propMap: suppliedPropMap,
   };
 
   const commonProps = {
-    type,
     propMap,
     nodes,
     visibleMenus,

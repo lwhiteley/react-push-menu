@@ -16,7 +16,6 @@ const Wrapper = styled.div`
 
 export interface Props {
   className?: string;
-  type?: string;
   nodes: Record<string, any>;
   propMap?: Partial<PropMap>;
   children: React.ReactNode;
@@ -37,12 +36,11 @@ export const PushMenuContainer: React.FC<Props> = ({
   backComponent,
   backIcon,
   className,
-  type = 'cover',
   onNodeClick = () => {},
   onMenuExpand = () => {},
 }) => {
   return (
-    <PushMenuProvider propMap={propMap} nodes={nodes} type={type}>
+    <PushMenuProvider propMap={propMap} nodes={nodes}>
       <Wrapper className={clsx('rpm-container', className)} id="rpm-container">
         <PushMenu
           linkComponent={linkComponent}
