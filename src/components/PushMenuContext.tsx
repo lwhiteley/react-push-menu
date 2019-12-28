@@ -1,7 +1,7 @@
 import React from 'react';
-import get from 'lodash/get';
 
-import { PropMap } from '../types';
+import { PropMap, Node, VisibleMenus } from '../types';
+import { getNodeChildren } from '../lib/helpers';
 
 const defaultPropMaps: PropMap = {
   displayName: 'name',
@@ -34,9 +34,6 @@ export interface Props {
   propMap: Partial<PropMap> | undefined;
   type: string;
 }
-
-export type Node = Record<string, any>;
-export type VisibleMenus = Array<Node>;
 
 const Context = React.createContext<MenuContextData>({
   type: 'cover',
@@ -74,10 +71,8 @@ const PushMenuProvider: React.FC<Props> = ({ children, propMap: suppliedPropMap,
     setVisibleMenus([]);
   };
 
-  const getNodeChildren = (node: Node) => get(node, get(propMap, 'childPropName', ''), []);
-
   const openSubMenu = (node: Node) => {
-    const nodeChildren = getNodeChildren(node);
+    const nodeChildren = getNodeChildren(node, propMap);
     if (nodeChildren.length < 1) {
       return null;
     }
@@ -85,7 +80,7 @@ const PushMenuProvider: React.FC<Props> = ({ children, propMap: suppliedPropMap,
   };
 
   const openMenu = () => {
-    const nodeChildren = getNodeChildren(nodes);
+    const nodeChildren = getNodeChildren(nodes, propMap);
     if (visibleMenus.length > 0 || nodeChildren.length < 1) {
       return null;
     }

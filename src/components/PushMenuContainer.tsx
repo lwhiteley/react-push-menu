@@ -12,7 +12,6 @@ const Wrapper = styled.div`
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  /*background: #34495e;*/
 `;
 
 export interface Props {

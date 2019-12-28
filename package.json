@@ -19,11 +19,9 @@
   "license": "MIT",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "clsx": "^1.0.4",
-    "lodash": "^4.17.15"
+    "clsx": "^1.0.4"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.149",
     "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.4",
     "@types/styled-components": "^4.4.0",

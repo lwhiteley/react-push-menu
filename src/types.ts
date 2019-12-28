@@ -6,3 +6,6 @@ export interface PropMap {
   url: string;
   id: string;
 }
+
+export type Node = Record<string, any>;
+export type VisibleMenus = Array<Node>;

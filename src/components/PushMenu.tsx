@@ -5,16 +5,7 @@ import { DefaultBackButton } from './DefaultBackButton';
 import { usePushMenu } from './PushMenuContext';
 import { Node } from './Node';
 import slug from '../lib/slug';
-
-// const menuEnter = keyframes`
-//   from {
-//     transform: translate3d(-100%, 0, 0);
-//   }
-
-//   to {
-//     transform: translate3d(0, 0, 0);
-//   }
-// `;
+import { getNodeChildren, getNodeTitle } from '../lib/helpers';
 
 const Scroller = styled.div<{ open?: boolean }>`
   height: 100%;
@@ -91,7 +82,6 @@ const Level = styled(PusherBase)`
   height: 100%;
   background: #336ca6;
   padding-left: 8px;
-  /* transform: translate3d(-100%, 0, 0); */
 `;
 
 export interface Props {
@@ -124,22 +114,22 @@ export const PushMenu: React.FC<Props> = ({
     <Pusher className={`rpm-mp-pusher`} id={`rpm-mp-pusher`}>
       <Menu id="rpm-mp-menu" className="rpm-mp-menu" open={isOpen}>
         <div>
-          {visibleMenus.map((child: Record<string, any> = {}, level: number) => {
-            const items = (child && child[(propMap || {}).childPropName]) || [];
+          {visibleMenus.map((menuNode: Record<string, any> = {}, level: number) => {
+            const items = getNodeChildren(menuNode, propMap);
 
             return (
               <Level key={level} className="rpm-mp-level">
                 <div>
-                  <h2>{level === 0 ? nodes.header : child.nodeTitle}</h2>
+                  <h2>{level === 0 ? nodes.header : getNodeTitle(menuNode, propMap)}</h2>
                   {level > 0 && (
                     <div className={`rpm-inline-block rpm-mp-back`}>
-                      <BackComponent data={{ child, propMap }} backIcon={backIcon} />
+                      <BackComponent data={{ node: menuNode, propMap }} backIcon={backIcon} />
                     </div>
                   )}
                 </div>
 
                 {items.map((node: Record<string, any>, index: number) => {
-                  const nodeTitle = node[propMap.displayName];
+                  const nodeTitle = getNodeTitle(node, propMap);
                   const key = node[propMap.id] || `${slug(nodeTitle)}-${index}`;
                   return (
                     <Node
