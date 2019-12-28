@@ -101,6 +101,7 @@ export interface Props {
   expanderComponent: Function;
   backComponent?: Function;
   onNodeClick?: Function;
+  onMenuExpand?: Function;
 }
 
 export const PushMenu: React.FC<Props> = ({
@@ -110,6 +111,7 @@ export const PushMenu: React.FC<Props> = ({
   backComponent: BackComponent = DefaultBackButton,
   backIcon,
   onNodeClick = () => {},
+  onMenuExpand = () => {},
 }) => {
   const { propMap, nodes, visibleMenus } = usePushMenu();
   const isOpen = visibleMenus.length > 0;
@@ -126,33 +128,31 @@ export const PushMenu: React.FC<Props> = ({
             const items = (child && child[(propMap || {}).childPropName]) || [];
 
             return (
-              <div key={level}>
-                <Level className="rpm-mp-level">
-                  <div>
-                    <h2>{level === 0 ? nodes.header : child.nodeTitle}</h2>
-                    {level > 0 && (
-                      <div className={`rpm-inline-block rpm-mp-back`}>
-                        <BackComponent data={{ child, propMap }} backIcon={backIcon} />
-                      </div>
-                    )}
-                  </div>
+              <Level key={level} className="rpm-mp-level">
+                <div>
+                  <h2>{level === 0 ? nodes.header : child.nodeTitle}</h2>
+                  {level > 0 && (
+                    <div className={`rpm-inline-block rpm-mp-back`}>
+                      <BackComponent data={{ child, propMap }} backIcon={backIcon} />
+                    </div>
+                  )}
+                </div>
 
-                  {items.map((node: Record<string, any>, index: number) => {
-                    const nodeTitle = node[propMap.displayName];
-                    const key = node[propMap.id] || `${slug(nodeTitle)}-${index}`;
-                    return (
-                      <Node
-                        key={key}
-                        node={{ ...node, nodeTitle }}
-                        index={index}
-                        linkComponent={linkComponent}
-                        expanderComponent={expanderComponent}
-                        onNodeClick={onNodeClick}
-                      />
-                    );
-                  })}
-                </Level>
-              </div>
+                {items.map((node: Record<string, any>, index: number) => {
+                  const nodeTitle = node[propMap.displayName];
+                  const key = node[propMap.id] || `${slug(nodeTitle)}-${index}`;
+                  return (
+                    <Node
+                      key={key}
+                      node={{ ...node, nodeTitle }}
+                      linkComponent={linkComponent}
+                      expanderComponent={expanderComponent}
+                      onNodeClick={onNodeClick}
+                      onMenuExpand={onMenuExpand}
+                    />
+                  );
+                })}
+              </Level>
             );
           })}
         </div>

@@ -1,7 +1,7 @@
 # react-push-menu
 
 > Notice: There are breaking changes.
-> Do not upgrade from v1.\* if you do not intent to adjust the interfaces seen below
+> Do not upgrade from v1.\* if you do not intend to adjust the interfaces seen below.
 > The interface to manage the menu has changed.
 > Please see the examples below
 
@@ -106,9 +106,10 @@ Please note it won't be fired when you click the expand component for a menu ite
     /**
       {
         // state
-        nodes: Record<string, any>;
+        node: Record<string, any>; // the current node
+        nodes: Record<string, any>; // full menu tree
         propMap: PropMap;
-        visibleMenus: VisibleMenus;
+        visibleMenus: Array;
 
         // actions
         addMenu: Function;
@@ -127,18 +128,31 @@ Please note it won't be fired when you click the expand component for a menu ite
 ></PushMenu>
 ```
 
+**onMenuExpand** (function)
+
+This function triggered when a sub menu is expanded.
+
+```js
+<PushMenu
+  onMenuExpand={(e, context) => {
+    // do something
+    // return false to prevent default behaviour
+  }}
+></PushMenu>
+```
+
 **linkComponent** (React.Component)
 
 You can fully customize the link of the menu by passing in a React Component to this property.
 It will be instantiated with the data object also passed in `onNodeClick` as a property (`this.props.data`).
-To see an example please see [example/LinkComponent.js](example/LinkComponent.js)
+To see an example please see [LinkComponent.js](example/src/LinkComponent.js)
 
 **backComponent** (React.Component)
 
 You can fully customize the back link of the sub menus by passing in a React Component to this property.
 It will be instantiated with the data object also passed in `onNodeClick` as a property (`this.props.data`).
 
-**backIcon** (React.Component)
+**backIcon** (ReactNode)
 
 If you don't specify a `backComponent`, you can at least need specify an icon to use for the back component
 
@@ -149,7 +163,7 @@ If you don't specify a `backComponent`, you can at least need specify an icon to
 **expanderComponent** (React.Component) (Required)
 
 You can fully customize the expander link of the sub menus by passing in a React Component to this property. The expander is the `chevron-right` that appears when a menu item has children.
-It will be instantiated with the data object also passed in `onNodeClick` as a property (`this.props.data`).
+It will be instantiated with the data object which contains the current node being interacted with. (`props.data`).
 
 ## Notes/Todos
 

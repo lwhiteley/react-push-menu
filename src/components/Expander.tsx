@@ -23,15 +23,20 @@ const Wrapper = styled.div`
 export interface Props {
   node: Record<string, any>;
   expanderComponent: Function;
+  onMenuExpand?: Function;
 }
 
-export const Expander: React.FC<Props> = ({ node, expanderComponent: ExpanderComponent }) => {
-  const { openSubMenu } = usePushMenu();
+export const Expander: React.FC<Props> = ({ node, expanderComponent: ExpanderComponent, onMenuExpand = () => {} }) => {
+  const { openSubMenu, ...otherContextProps } = usePushMenu();
 
   return (
     <Wrapper
       className="rpm-node-exp"
-      onClick={() => {
+      onClick={e => {
+        const allowDefault: any = onMenuExpand(e, { node, openSubMenu, ...otherContextProps });
+        if (typeof allowDefault === 'boolean' && !allowDefault) {
+          return false;
+        }
         openSubMenu(node);
       }}
     >

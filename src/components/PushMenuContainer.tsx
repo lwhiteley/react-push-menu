@@ -26,6 +26,7 @@ export interface Props {
   expanderComponent: Function;
   backComponent?: Function;
   onNodeClick?: Function;
+  onMenuExpand?: Function;
 }
 
 export const PushMenuContainer: React.FC<Props> = ({
@@ -39,6 +40,7 @@ export const PushMenuContainer: React.FC<Props> = ({
   className,
   type = 'cover',
   onNodeClick = () => {},
+  onMenuExpand = () => {},
 }) => {
   return (
     <PushMenuProvider propMap={propMap} nodes={nodes} type={type}>
@@ -49,6 +51,7 @@ export const PushMenuContainer: React.FC<Props> = ({
           backComponent={backComponent}
           backIcon={backIcon}
           onNodeClick={onNodeClick}
+          onMenuExpand={onMenuExpand}
         >
           {children}
         </PushMenu>
