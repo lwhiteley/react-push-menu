@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { DefaultBackButton } from './DefaultBackButton';
 import { usePushMenu } from './PushMenuContext';
@@ -112,41 +113,39 @@ export const PushMenu: React.FC<Props> = ({
   }
 
   return (
-    <Pusher className={`rpm-mp-pusher`} id={`rpm-mp-pusher`}>
+    <Pusher className={clsx(`rpm-mp-pusher`, { 'rpm-mp-pushed': isOpen })} id={`rpm-mp-pusher`}>
       <Menu id="rpm-mp-menu" className="rpm-mp-menu" open={isOpen}>
-        <div>
-          {visibleMenus.map((menuNode: Record<string, any> = {}, level: number) => {
-            const items = getNodeChildren(menuNode, propMap);
+        {visibleMenus.map((menuNode: Record<string, any> = {}, level: number) => {
+          const items = getNodeChildren(menuNode, propMap);
 
-            return (
-              <Level key={level} className="rpm-mp-level">
-                <div>
-                  <h2>{level === 0 ? nodes.header : getNodeTitle(menuNode, propMap)}</h2>
-                  {level > 0 && (
-                    <div className={`rpm-inline-block rpm-mp-back`}>
-                      <BackComponent data={{ node: menuNode, ...menuContext }} backIcon={backIcon} />
-                    </div>
-                  )}
-                </div>
+          return (
+            <Level key={level} className={`rpm-mp-level rpm-mp-level-${level}`}>
+              <div>
+                <h2 className="rpm-mp-header">{level === 0 ? nodes.header : getNodeTitle(menuNode, propMap)}</h2>
+                {level > 0 && (
+                  <div className={`rpm-inline-block rpm-mp-back`}>
+                    <BackComponent data={{ node: menuNode, ...menuContext }} backIcon={backIcon} />
+                  </div>
+                )}
+              </div>
 
-                {items.map((node: Record<string, any>, index: number) => {
-                  const nodeTitle = getNodeTitle(node, propMap);
-                  const key = node[propMap.id] || `${slug(nodeTitle)}-${index}`;
-                  return (
-                    <Node
-                      key={key}
-                      node={{ ...node, nodeTitle }}
-                      linkComponent={linkComponent}
-                      expanderComponent={expanderComponent}
-                      onNodeClick={onNodeClick}
-                      onMenuExpand={onMenuExpand}
-                    />
-                  );
-                })}
-              </Level>
-            );
-          })}
-        </div>
+              {items.map((node: Record<string, any>, index: number) => {
+                const nodeTitle = getNodeTitle(node, propMap);
+                const key = node?.[propMap?.id] || `${slug(nodeTitle)}-${index}`;
+                return (
+                  <Node
+                    key={key}
+                    node={{ ...node, nodeTitle }}
+                    linkComponent={linkComponent}
+                    expanderComponent={expanderComponent}
+                    onNodeClick={onNodeClick}
+                    onMenuExpand={onMenuExpand}
+                  />
+                );
+              })}
+            </Level>
+          );
+        })}
       </Menu>
 
       <Scroller className="rpm-scroller" open={isOpen}>
