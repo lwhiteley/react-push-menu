@@ -27,7 +27,7 @@ export const Node: React.FC<Props> = ({
   onNodeClick,
   onMenuExpand,
 }) => {
-  const { propMap } = usePushMenu();
+  const menuContext = usePushMenu();
 
   const self = {
     renderNode: function renderNode(node: Record<string, any>) {
@@ -35,8 +35,14 @@ export const Node: React.FC<Props> = ({
 
       return (
         <Wrapper className={`rpm-node-cntr`}>
-          <LinkComponent onNodeClick={onNodeClick} data={{ node, propMap }} />
-          {hasChildren && <Expander node={node} expanderComponent={expanderComponent} onMenuExpand={onMenuExpand} />}
+          <LinkComponent onNodeClick={onNodeClick} data={{ node, ...menuContext }} />
+          {hasChildren && (
+            <Expander
+              data={{ node, ...menuContext }}
+              expanderComponent={expanderComponent}
+              onMenuExpand={onMenuExpand}
+            />
+          )}
         </Wrapper>
       );
     },

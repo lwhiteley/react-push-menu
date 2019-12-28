@@ -40,14 +40,13 @@ function App() {
     <PushMenu
       backIcon={<FaChevronLeft />}
       expanderComponent={FaChevronRight}
-      // onNodeClick={(e, { menu, node }) => {
-      //   console.log(node);
-      //   menu.tools.reset();
-      // }}
+      onNodeClick={(e: Event, context: { node: Record<string, any>; closeMenu: Function }) => {
+        e.preventDefault();
+        console.log(context);
+        context.closeMenu();
+      }}
       linkComponent={Link}
-      // isOpen={false}
       nodes={data.menu}
-      // type={'cover'}
       propMap={{ url: 'link' }}
     >
       <Content />

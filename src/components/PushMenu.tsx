@@ -103,7 +103,8 @@ export const PushMenu: React.FC<Props> = ({
   onNodeClick = () => {},
   onMenuExpand = () => {},
 }) => {
-  const { propMap, nodes, visibleMenus } = usePushMenu();
+  const menuContext = usePushMenu();
+  const { propMap, nodes, visibleMenus } = menuContext;
   const isOpen = visibleMenus.length > 0;
 
   if (!isOpen) {
@@ -123,7 +124,7 @@ export const PushMenu: React.FC<Props> = ({
                   <h2>{level === 0 ? nodes.header : getNodeTitle(menuNode, propMap)}</h2>
                   {level > 0 && (
                     <div className={`rpm-inline-block rpm-mp-back`}>
-                      <BackComponent data={{ node: menuNode, propMap }} backIcon={backIcon} />
+                      <BackComponent data={{ node: menuNode, ...menuContext }} backIcon={backIcon} />
                     </div>
                   )}
                 </div>

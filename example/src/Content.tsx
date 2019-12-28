@@ -11,23 +11,17 @@ const StyledDiv = styled.div`
 `;
 
 function Content() {
-  const { toggleMenu } = usePushMenu();
+  const { toggleMenu, closeMenu } = usePushMenu();
 
   return (
-    <>
-      <div
-        className="rpm-trigger"
-        id="rpm-trigger"
-        onClick={() => {
-          toggleMenu();
-        }}
-      >
+    <div>
+      <div role="presentation" onClick={() => toggleMenu()}>
         <FaBars />
       </div>
-      <div>
-        <StyledDiv>Example App styled component</StyledDiv>
+      <div role="presentation" onClick={() => closeMenu()}>
+        <StyledDiv>Touch me also to close the menu</StyledDiv>
       </div>
-    </>
+    </div>
   );
 }
 

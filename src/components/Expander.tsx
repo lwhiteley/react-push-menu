@@ -21,26 +21,27 @@ const Wrapper = styled.div`
 `;
 
 export interface Props {
-  node: Record<string, any>;
+  data: Record<string, any>;
   expanderComponent: Function;
   onMenuExpand?: Function;
 }
 
-export const Expander: React.FC<Props> = ({ node, expanderComponent: ExpanderComponent, onMenuExpand = () => {} }) => {
-  const { openSubMenu, ...otherContextProps } = usePushMenu();
+export const Expander: React.FC<Props> = ({ data, expanderComponent: ExpanderComponent, onMenuExpand = () => {} }) => {
+  const { node } = data;
+  const { openSubMenu } = usePushMenu();
 
   return (
     <Wrapper
       className="rpm-node-exp"
       onClick={e => {
-        const allowDefault: any = onMenuExpand(e, { node, openSubMenu, ...otherContextProps });
+        const allowDefault: any = onMenuExpand(e, { node, ...data });
         if (typeof allowDefault === 'boolean' && !allowDefault) {
           return false;
         }
         openSubMenu(node);
       }}
     >
-      <ExpanderComponent data={{ node }} />
+      <ExpanderComponent data={data} />
     </Wrapper>
   );
 };
