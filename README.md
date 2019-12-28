@@ -112,11 +112,11 @@ Please note it won't be fired when you click the expand component for a menu ite
         visibleMenus: Array;
 
         // actions
-        addMenu: Function;
+        addMenu: (node) => {};
         removeLastMenu: Function;
         closeMenu: Function;
         openMenu: Function;
-        openSubMenu: Function;
+        openSubMenu: (node) => {};
         toggleMenu: Function;
       }
      **/
@@ -144,13 +144,13 @@ This function triggered when a sub menu is expanded.
 **linkComponent** (React.Component)
 
 You can fully customize the link of the menu by passing in a React Component to this property.
-It will be instantiated with the data object also passed in `onNodeClick` as a property (`this.props.data`).
+It will be instantiated with the data object which contains the current node being interacted with. (`props.data`).
 To see an example please see [LinkComponent.js](example/src/LinkComponent.js)
 
 **backComponent** (React.Component)
 
 You can fully customize the back link of the sub menus by passing in a React Component to this property.
-It will be instantiated with the data object also passed in `onNodeClick` as a property (`this.props.data`).
+It will be instantiated with the data object which contains the current node being interacted with. (`props.data`).
 
 **backIcon** (ReactNode)
 
