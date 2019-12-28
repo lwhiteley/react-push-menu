@@ -52,17 +52,13 @@ function App() {
 }
 ```
 
-### Demo
-
-![demo](https://i.imgur.com/i7Knwu8.gif)
-
 See [example](example/src/App.tsx) for more details
 
 ## Properties
 
 **nodes** (Object)
 
-This property accepts an object with the definition for the menu. see the [example](/example/index.js) for a sample menu definition
+This property accepts an object with the definition for the menu. see the [example](example/src/App.tsx) for a sample menu definition
 
 **propMap** (Object)
 
