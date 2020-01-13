@@ -9,6 +9,7 @@ To install all dependencies run:
 
 ```
 npm i
+npm run dev:install
 ```
 
 It will install:
