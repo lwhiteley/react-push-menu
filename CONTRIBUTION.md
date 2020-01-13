@@ -15,7 +15,6 @@ npm run dev:install
 It will install:
 
 - `dependencies` and `devDependencies` from ./package.json
-- `peerDependencies` from ./package.json thanks to `install-peers-cli`
 - `dependencies` and `devDependencies` from ./example/package.json (example `create react app` for testing)
 
 ## Developing your library:
