@@ -93,7 +93,7 @@ export interface Props {
   backComponent?: Function;
   onNodeClick?: Function;
   onMenuExpand?: Function;
-  openOnMount?: Boolean;
+  openOnMount?: boolean;
 }
 
 export const PushMenu: React.FC<Props> = ({
