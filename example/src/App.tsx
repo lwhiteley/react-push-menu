@@ -39,6 +39,7 @@ function App() {
   return (
     <PushMenu
       backIcon={<FaChevronLeft />}
+      openOnMount
       expanderComponent={FaChevronRight}
       onNodeClick={(e: Event, context: { node: Record<string, any>; closeMenu: Function }) => {
         e.preventDefault();

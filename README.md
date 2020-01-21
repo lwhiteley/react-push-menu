@@ -56,6 +56,10 @@ See [example](example/src/App.tsx) for more details
 
 ## Properties
 
+**openOnMount** (boolean)
+
+This option allows you to initialize the push menu as open on load.
+
 **nodes** (Object)
 
 This property accepts an object with the definition for the menu. see the [example](example/src/App.tsx) for a sample menu definition

@@ -93,6 +93,7 @@ export interface Props {
   backComponent?: Function;
   onNodeClick?: Function;
   onMenuExpand?: Function;
+  openOnMount?: boolean;
 }
 
 export const PushMenu: React.FC<Props> = ({
@@ -103,10 +104,17 @@ export const PushMenu: React.FC<Props> = ({
   backIcon,
   onNodeClick = () => {},
   onMenuExpand = () => {},
+  openOnMount = false,
 }) => {
   const menuContext = usePushMenu();
-  const { propMap, nodes, visibleMenus } = menuContext;
+  const { propMap, nodes, visibleMenus, openMenu } = menuContext;
   const isOpen = visibleMenus.length > 0;
+
+  React.useEffect(() => {
+    if (openOnMount) {
+      openMenu();
+    }
+  }, [openOnMount]);
 
   if (!isOpen) {
     return <>{children}</>;
