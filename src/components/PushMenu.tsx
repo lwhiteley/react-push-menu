@@ -102,8 +102,8 @@ export const PushMenu: React.FC<Props> = ({
   expanderComponent,
   backComponent: BackComponent = DefaultBackButton,
   backIcon,
-  onNodeClick = () => {},
-  onMenuExpand = () => {},
+  onNodeClick = () => undefined,
+  onMenuExpand = () => undefined,
   openOnMount = false,
 }) => {
   const menuContext = usePushMenu();
