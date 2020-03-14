@@ -26,7 +26,11 @@ export interface Props {
   onMenuExpand?: Function;
 }
 
-export const Expander: React.FC<Props> = ({ data, expanderComponent: ExpanderComponent, onMenuExpand = () => {} }) => {
+export const Expander: React.FC<Props> = ({
+  data,
+  expanderComponent: ExpanderComponent,
+  onMenuExpand = () => undefined,
+}) => {
   const { node } = data;
   const { openSubMenu } = usePushMenu();
 

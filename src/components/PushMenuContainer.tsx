@@ -37,8 +37,8 @@ export const PushMenuContainer: React.FC<Props> = ({
   backComponent,
   backIcon,
   className,
-  onNodeClick = () => {},
-  onMenuExpand = () => {},
+  onNodeClick = () => undefined,
+  onMenuExpand = () => undefined,
   openOnMount = false,
 }) => {
   return (

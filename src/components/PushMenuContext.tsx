@@ -37,12 +37,12 @@ const Context = React.createContext<MenuContextData>({
   nodes: {},
   propMap: defaultPropMaps,
   visibleMenus: [],
-  addMenu: () => {},
-  removeLastMenu: () => {},
-  closeMenu: () => {},
-  openMenu: () => {},
-  openSubMenu: () => {},
-  toggleMenu: () => {},
+  addMenu: () => undefined,
+  removeLastMenu: () => undefined,
+  closeMenu: () => undefined,
+  openMenu: () => undefined,
+  openSubMenu: () => undefined,
+  toggleMenu: () => undefined,
 });
 const { Provider } = Context;
 
