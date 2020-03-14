@@ -11,6 +11,7 @@
     "noImplicitAny": true,
     "outDir": "./dist",
     "target": "es5",
+    "lib": ["esnext", "dom"],
     "jsx": "react"
   },
   "include": ["src/**/*"],
