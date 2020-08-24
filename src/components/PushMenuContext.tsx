@@ -19,12 +19,12 @@ export interface MenuContextData {
   visibleMenus: VisibleMenus;
 
   // actions
-  addMenu: Function;
-  removeLastMenu: Function;
-  closeMenu: Function;
-  openMenu: Function;
-  openSubMenu: Function;
-  toggleMenu: Function;
+  addMenu: (node: Record<string, any>) => void;
+  removeLastMenu: () => void;
+  closeMenu: (node: Record<string, any>) => void;
+  openMenu: () => void;
+  openSubMenu: (node: Record<string, any>) => void;
+  toggleMenu: (node: Record<string, any>) => void;
 }
 
 export interface Props {

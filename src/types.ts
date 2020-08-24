@@ -9,3 +9,4 @@ export interface PropMap {
 
 export type Node = Record<string, any>;
 export type VisibleMenus = Array<Node>;
+export type Callback = (e: React.SyntheticEvent, data: Record<string, any>) => void;

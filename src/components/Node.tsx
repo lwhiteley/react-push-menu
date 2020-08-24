@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { usePushMenu } from './PushMenuContext';
 import { DefaultLinkComponent } from './DefaultLinkComponent';
 import { Expander } from './Expander';
+import { Callback } from '../types';
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,10 +15,10 @@ const Wrapper = styled.div`
 
 export interface Props {
   node: Record<string, any>;
-  linkComponent?: Function;
-  expanderComponent: Function;
-  onNodeClick?: Function;
-  onMenuExpand?: Function;
+  linkComponent?: React.FC<{ onNodeClick: Callback }>;
+  expanderComponent: React.FC;
+  onNodeClick: Callback;
+  onMenuExpand?: Callback;
 }
 
 export const Node: React.FC<Props> = ({

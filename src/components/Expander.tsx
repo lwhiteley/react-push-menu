@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { usePushMenu } from './PushMenuContext';
+import { Callback } from '../types';
 
 const Wrapper = styled.div`
   display: inline-block;
@@ -22,8 +23,8 @@ const Wrapper = styled.div`
 
 export interface Props {
   data: Record<string, any>;
-  expanderComponent: Function;
-  onMenuExpand?: Function;
+  expanderComponent: React.FC<{ data: Record<string, any> }>;
+  onMenuExpand?: Callback;
 }
 
 export const Expander: React.FC<Props> = ({
@@ -37,7 +38,7 @@ export const Expander: React.FC<Props> = ({
   return (
     <Wrapper
       className="rpm-node-exp"
-      onClick={e => {
+      onClick={(e) => {
         const allowDefault: any = onMenuExpand(e, { node, ...data });
         if (typeof allowDefault === 'boolean' && !allowDefault) {
           return false;
