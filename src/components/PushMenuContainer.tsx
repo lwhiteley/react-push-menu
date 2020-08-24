@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { PushMenuProvider } from './PushMenuContext';
 import { PushMenu } from './PushMenu';
-import { PropMap } from '../types';
+import { PropMap, Callback } from '../types';
 
 const Wrapper = styled.div`
   height: 100%;
@@ -20,11 +20,11 @@ export interface Props {
   propMap?: Partial<PropMap>;
   children: React.ReactNode;
   backIcon: React.ReactNode;
-  linkComponent?: Function;
-  expanderComponent: Function;
-  backComponent?: Function;
-  onNodeClick?: Function;
-  onMenuExpand?: Function;
+  linkComponent?: React.FC;
+  expanderComponent: React.FC;
+  backComponent?: React.FC;
+  onNodeClick?: Callback;
+  onMenuExpand?: Callback;
   openOnMount?: boolean;
 }
 

@@ -10,7 +10,7 @@ const StyledDiv = styled.div`
   color: white;
 `;
 
-function Content() {
+function Content(): React.ReactNode {
   const { toggleMenu, closeMenu } = usePushMenu();
 
   return (

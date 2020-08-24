@@ -60,7 +60,7 @@
     "test": "run-s test:lint test:spec ",
     "test:spec": "ts-node test/test.ts",
     "pretest": "npm run build",
-    "test:lint": "eslint ./src/**/*.ts ./src/**/*.tsx ./example/src/**/*.ts ./example/src/**/*.tsx",
+    "test:lint": "eslint ./src/**/*.ts ./src/**/*.tsx",
     "test:lint:fix": "npm run test:lint -- --fix",
     "publish": "git push origin --tags && git push origin",
     "release:patch": "npm version patch && npm publish --access public",

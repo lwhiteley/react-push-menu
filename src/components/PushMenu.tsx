@@ -7,6 +7,7 @@ import { usePushMenu } from './PushMenuContext';
 import { Node } from './Node';
 import slug from '../lib/slug';
 import { getNodeChildren, getNodeTitle } from '../lib/helpers';
+import { Callback } from '../types';
 
 const Scroller = styled.div<{ open?: boolean }>`
   height: 100%;
@@ -88,11 +89,11 @@ const Level = styled(PusherBase)`
 export interface Props {
   children: React.ReactNode;
   backIcon: React.ReactNode;
-  linkComponent?: Function;
-  expanderComponent: Function;
-  backComponent?: Function;
-  onNodeClick?: Function;
-  onMenuExpand?: Function;
+  linkComponent?: React.FC;
+  expanderComponent: React.FC;
+  backComponent?: React.FC<{ data: Record<string, any> }>;
+  onNodeClick?: Callback;
+  onMenuExpand?: Callback;
   openOnMount?: boolean;
 }
 
